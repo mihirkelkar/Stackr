@@ -3,8 +3,12 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
+
 #This import is necessary to create default forms to register users. 
-from django.contrib.auth.forms import UserCreationForm
+#from django.contrib.auth.forms import UserCreationForm
+#Now using my custom user form
+from forms import MyRegistrationForm
+
 
 def homepage(request):
   return render_to_response('home.html')
@@ -20,7 +24,7 @@ def login(request):
   context_object.update(csrf(request))
   
   #Now building the form for user registration
-  context_object['form'] = UserCreationForm()
+  context_object['form'] = MyRegistrationForm()
   return render_to_response('login.html', context_object)
 
 def auth_view(request):
@@ -45,8 +49,8 @@ def invalid(request):
 
 def reg_view(request):
   if request.method == 'POST':
-    form = UserCreationForm(request.POST)
-    if form.is_valid():
+    form = MyRegistrationForm(request.POST)
+    if form.is_valid() and len(request.POST.get('zipcode')) == 5:
       form.save()
       return HttpResponseRedirect('/loggedin')
     else:
