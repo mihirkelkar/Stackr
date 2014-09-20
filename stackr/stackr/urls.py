@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     #User Auth Urls
     url(r'^login/$', 'stackr.views.login', name = "Login Page"),
     url(r'^login/auth/$', 'stackr.views.auth_view'),
-    url(r'^logout', 'stackr.views.logout', name = "Logout Thingy"),
-    url(r'^loggedin', 'stackr.views.loggedin', name = "Internal landing page"),
-    url(r'^invalid', 'stackr.views.invalid', name = "Invalid Log In"),
+    url(r'^logout/', 'stackr.views.logout', name = "Logout Thingy"),
+    url(r'^loggedin/', 'stackr.views.loggedin', name = "Internal landing page"),
+    url(r'^invalid/', 'stackr.views.invalid', name = "Invalid Log In"),
 )

@@ -30,3 +30,7 @@ def auth_view(request):
 
 def loggedin(request):
   return render_to_response('loggedin.html')
+
+def logout(request):
+  auth.logout(request)
+  return render_to_response('home.html')
