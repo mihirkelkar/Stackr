@@ -1,23 +1,94 @@
+<html>
+  {% load static %}
+  <head>
+    <title>
+      Stackr - Sign In
+    </title>
+    <style>
+body{
+  background: url({% static "garage.jpg" %});
+}
+      h1{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 100px;
+	font-weight: bold;
+        color: #ffffff;
+        position: relative;
+}
 
-{% block content %}
-  
-  {% if form.errors %}
-    <p class = "error"> Sorry, thats an invalid username / password combination</p>
-  {% endif %}
+h2{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 40px;
+	font-weight: bold;
+        color: #111111;
+    position: relative;
+}
 
-  <h1> Sign In </h1>
-  <form action = "auth/" method = "post"> {% csrf_token %}
-    <label for="username"> User Name </label>
-    <input type = "text" name = "username" value = "" id = "username">
-    <label for="password"> Password </label>
-    <input type="password" name = "password" value = "" id = "password">
-    <input type="submit" value="Login"/>
-  </form>
-  
-  <h1> Register a User </h1>
-  <form action = "register/" method = "post"> {% csrf_token %}
-    {{form}}
-    <input type="submit" value="Register"/>
-  </form>
-{% endblock %}
-  
+p{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+    position: relative;
+    color: #111111;
+}
+
+h3{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 30px;
+	font-weight: bold;
+	position:relative;
+        color: #111111;
+}
+
+label{
+  	font-family: 'Ubuntu', sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+        color: #111111;
+}
+
+    </style>
+      <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    {% if form.errors %}
+      <p class = "error"> Sorry, thats an invalid username / password combination</p>
+    {% endif %}
+    <center>
+      <center><h2> Sign In </h2></center>
+      <form action = "auth/" method = "post"> {% csrf_token %}
+        <label for="username"> User Name </label>
+        <input type = "text" name = "username" value = "" id = "username">
+        <label for="password"> Password </label>
+        <input type="password" name = "password" value = "" id = "password">
+        <input type="submit" value="Login"/>
+      </form>
+    </center>
+    <center>
+      <center><h2> Register a User </h2></center>
+      <form action = "register/" method = "post"> {% csrf_token %}
+        <table>
+          <tr>
+            <td><label>Username</label></td><td>{{form.username}}</td>
+          </tr>
+          <tr>
+            <td><label>Email Address</label></td><td>{{form.email}}</td>
+          </tr>
+          <tr>
+            <td><label>Password      </label></td><td>{{form.password1}}</td>
+          </tr>
+          <tr>
+            <td><label>Reconfirm Pass</label></td><td>{{form.password2}}</td>
+          </tr>
+          <tr>
+            <td><label>Address       </label></td><td>{{form.address}}</td>
+          </tr>
+          <tr>
+            <td><label>Zip Code      </label></td><td>{{form.zipcode}}</td>
+          </tr>
+        </table>
+        <input type="submit" value="Register"/>
+      </form>
+    </center>
+  </body>
+</html>
