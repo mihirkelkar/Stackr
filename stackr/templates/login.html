@@ -4,12 +4,20 @@
   {% if form.errors %}
     <p class = "error"> Sorry, thats an invalid username / password combination</p>
   {% endif %}
+
+  <h1> Sign In </h1>
   <form action = "auth/" method = "post"> {% csrf_token %}
     <label for="username"> User Name </label>
     <input type = "text" name = "username" value = "" id = "username">
     <label for="password"> Password </label>
     <input type="password" name = "password" value = "" id = "password">
     <input type="submit" value="Login"/>
+  </form>
+  
+  <h1> Register a User </h1>
+  <form action = "register/" method = "post"> {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Register"/>
   </form>
 {% endblock %}
   

@@ -18,4 +18,5 @@ urlpatterns = patterns('',
     url(r'^logout/', 'stackr.views.logout', name = "Logout Thingy"),
     url(r'^loggedin/', 'stackr.views.loggedin', name = "Internal landing page"),
     url(r'^invalid/', 'stackr.views.invalid', name = "Invalid Log In"),
+    url(r'^login/register/$', 'stackr.views.reg_view'),
 )
